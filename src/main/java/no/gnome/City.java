@@ -5,6 +5,7 @@
  */
 package no.gnome;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "city")
-public class City {
+public class City implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,19 +58,19 @@ public class City {
         try {
             this.population = Integer.parseInt(r[4]);
         } catch (NumberFormatException e) {
-            this.population = -1;
+            //this.population = -1;
         }
         try {
             this.latitude = Float.parseFloat(r[5]);
         } catch (NumberFormatException e) {
-            this.latitude = Float.valueOf("-360");
-            throw new NumberFormatException("error converting");
+            //this.latitude = Float.valueOf("-360");
+            //throw new NumberFormatException("error converting");
         }
         try {
-            this.latitude = Float.parseFloat(r[6]);
+            this.longitude = Float.parseFloat(r[6]);
         } catch (NumberFormatException e) {
-            this.latitude = Float.valueOf("-360");
-            throw new NumberFormatException("error converting");
+            //this.latitude = Float.valueOf("-360");
+            //throw new NumberFormatException("error converting");
         }
     }
     /**
