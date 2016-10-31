@@ -6,10 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import org.jooby.Jooby;
+import org.jooby.Mutant;
 import org.jooby.hbm.Hbm;
 import org.jooby.hbm.UnitOfWork;
 import org.jooby.json.Jackson;
@@ -41,6 +43,15 @@ public class App extends Jooby {
             return require(UnitOfWork.class).apply(em -> {
                 return em.createQuery("from City")
                     .setMaxResults(100)
+                    .getResultList();
+            });
+        });
+        
+        get("/cities/:name", req -> {
+            Map<String, Mutant> name = req.params("name").toMap();
+            return require(UnitOfWork.class).apply(em -> {
+                return em.createQuery("from City where name = :name")
+                    .setParameter("name", name.get("name").value())
                     .getResultList();
             });
         });

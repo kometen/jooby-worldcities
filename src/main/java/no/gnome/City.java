@@ -76,14 +76,14 @@ public class City implements Serializable {
     /**
      * @return the countryCode
      */
-    public String getCountryCode() {
+    public String getCountry_code() {
         return countrycode;
     }
 
     /**
      * @return the nameLowerCase
      */
-    public String getNameLowerCase() {
+    public String getName_lowerCase() {
         return name_lowercase;
     }
 
