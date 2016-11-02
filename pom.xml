@@ -88,6 +88,13 @@
       <groupId>org.jooby</groupId>
       <artifactId>jooby-jackson</artifactId>
     </dependency>
+    
+    <!-- SimpleLatLng calculate approximate distance on earth -->
+    <dependency>
+      <groupId>com.javadocmd</groupId>
+      <artifactId>simplelatlng</artifactId>
+      <version>RELEASE</version>
+    </dependency>
 
   </dependencies>
 
