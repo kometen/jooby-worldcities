@@ -59,4 +59,4 @@ create index name_lowercase_idx on city (name_lowercase);
 create index region_idx on city (region);
 
 
-[1]: jooby.org
+[1]: http://jooby.org
