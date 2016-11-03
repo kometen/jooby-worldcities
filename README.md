@@ -84,6 +84,8 @@ $ mvn jooby:run
 
 It took a bit longer importing the data on FreeBSD but since it is running inside vmware fusion and disk-access isn't that great that's fine. I have allocated six GB ram and two cpu-cores.
 
+When the import is completed you can search for a city like Berlin using http://localhost:8080/cities/Berlin. You can also search for cities using latitude and longitude and an optional radius in kilometer like http://cities/61.7428745/6.3968833/25. If kilometer is omitted it defaults to 20.
+
 [1]: http://jooby.org
 [2]: https://dl.dropboxusercontent.com/u/2729115/worldcitiespop.zip
 [3]: http://stackoverflow.com/a/18771124/319826
