@@ -1,7 +1,7 @@
 # jooby-worldcities
 Show cities within a radius via a rest interface.
 
-I'm using the very handy java web framework jooby[1] which simplifies java web development alot. Just
+I'm using the very handy java web framework [jooby][1] which simplifies java web development alot. Just
 create the project and you are (almost) up and running.
 
 Jooby requires java 8 and maven to be installed. My example uses postgresql so this needs to be installed as well.
@@ -59,4 +59,4 @@ create index name_lowercase_idx on city (name_lowercase);
 create index region_idx on city (region);
 
 
-[1][jooby.org]
+[1]: jooby.org
