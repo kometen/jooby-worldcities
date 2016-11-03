@@ -27,37 +27,46 @@ Add json to pom.xml
 ```
 And in App.java
 
+```
 use (new Jackson());
+```
 
 Add postgresql to pom.xml.
 
+```
 <!-- postgresql -->
 <dependency>
   <groupId>org.postgresql</groupId>
   <artifactId>postgresql</artifactId>
   <version>9.4.1211.jre7</version>
 </dependency>
+```
 
 Add hibernate ORM to pom.xml.
 
+```
 <!-- hibernate orm -->
 <dependency>
  <groupId>org.jooby</groupId>
  <artifactId>jooby-hbm</artifactId>
 </dependency>
+```
 
 Then create the database using
 
+```
 $ createdb worldcities
+```
 
 Connect the postgresql-client to the database and create indexes to speed up searches.
 
+```
 $ psql worldcities
 create index latitude_idx on city (latitude);
 create index longitude_idx on city (longitude);
 create index name_idx on city (name);
 create index name_lowercase_idx on city (name_lowercase);
 create index region_idx on city (region);
-
+```
 
 [1]: http://jooby.org
