@@ -10,11 +10,15 @@ I have used postgresql 9.4 on macOS sierra and 9.6 on FreeBSD 11.0 RELEASE.
 
 Create the jooby-project using
 
+```
 $ mvn archetype:generate -B -DgroupId=com.mycompany -DartifactId=my-app -Dversion=1.0-SNAPSHOT -DarchetypeArtifactId=jooby-archetype -DarchetypeGroupId=org.jooby -DarchetypeVersion=1.0.0.CR8
+```
 
 Start the project
 
+```
 $ mvn jooby:run
+```
 
 Add json to pom.xml
 
