@@ -16,10 +16,7 @@ import org.jooby.json.Jackson;
 import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import org.hibernate.Session;
+import java.util.Iterator;
 import org.jooby.Request;
 
 /**
@@ -144,7 +141,7 @@ public class App extends Jooby {
         LatLng longitude_north = LatLngTool.travel(center, 90, radius, LengthUnit.KILOMETER);
 
         // Get locations within a square.
-        List<UnitOfWork> result = require(UnitOfWork.class).apply(em -> {
+        List<City> locations = require(UnitOfWork.class).apply(em -> {
             return em.createQuery("from City c where c.latitude between :latitude_west and :latitude_east and c.longitude between :longitude_low and :longitude_high")
                     .setParameter("latitude_west", (float) latitude_west.getLatitude())
                     .setParameter("latitude_east", (float) latitude_east.getLatitude())
@@ -153,22 +150,18 @@ public class App extends Jooby {
                     .getResultList();
         });
         
-        // List to be returned.
-        List<City> localCity = new ArrayList<>();
-        
-        // Convert to object-array.
-        Object[] resultToObject = result.toArray();
-
-        for (Object object : resultToObject) {
-            City city = (City) object;
+        // Define iterator that will traverse the list and remove locations outside the radius.
+        Iterator<City> locationsIterator = locations.iterator();
+        while (locationsIterator.hasNext()) {
+            City city = locationsIterator.next();
             LatLng endpoint = new LatLng(city.getLatitude(), city.getLongitude());
             double distance = LatLngTool.distance(center, endpoint, LengthUnit.KILOMETER);
-            if (distance < radius) {
-                localCity.add(city);
+            if (distance > radius) {
+                locationsIterator.remove();
             }
         }
         
-        return localCity;
+        return locations;
     }
     
     public static void main(final String[] args) {
