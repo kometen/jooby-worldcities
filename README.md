@@ -73,4 +73,8 @@ create index name_lowercase_idx on city (name_lowercase);
 create index region_idx on city (region);
 ```
 
+The file I load is called worldcitiespop.txt. Place this on the root-level of the project where pom.xml is located. Download a copy of the file from my [dropbox-account][2].
+
+
 [1]: http://jooby.org
+[2]: https://dl.dropboxusercontent.com/u/2729115/worldcitiespop.zip
