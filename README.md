@@ -75,6 +75,13 @@ create index region_idx on city (region);
 
 The file I load is called worldcitiespop.txt. Place this on the root-level of the project where pom.xml is located. Download a copy of the file from my [dropbox-account][2].
 
+Then import the data using http://localhost:8080/import. This took approx. seven minutes on my 15" macbook pro from 2012 with 16 GB ram. When importing on FreeBSD I had to increase ram allocated to java with
+
+```
+export MAVEN_OPTS="-Xmx3G -Xss256M -XX:+CMSClassUnloadingEnabled"
+$ mvn jooby:run
+```
+
 
 [1]: http://jooby.org
 [2]: https://dl.dropboxusercontent.com/u/2729115/worldcitiespop.zip
