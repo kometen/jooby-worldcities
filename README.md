@@ -18,12 +18,13 @@ $ mvn jooby:run
 
 Add json to pom.xml
 
+```
 <!-- Jackson json -->
 <dependency>
   <groupId>org.jooby</groupId>
   <artifactId>jooby-jackson</artifactId>
 </dependency>
-
+```
 And in App.java
 
 use (new Jackson());
