@@ -78,10 +78,11 @@ The file I load is called worldcitiespop.txt. Place this on the root-level of th
 Then import the data using http://localhost:8080/import. This took approx. seven minutes on my 15" macbook pro from 2012 with 16 GB ram. When importing on FreeBSD I had to increase ram allocated to java with
 
 ```
-export MAVEN_OPTS="-Xmx3G -Xss256M -XX:+CMSClassUnloadingEnabled"
+$ export MAVEN_OPTS="-Xmx3G -Xss256M -XX:+CMSClassUnloadingEnabled"
 $ mvn jooby:run
 ```
 
+It took a bit longer importing the data on FreeBSD but since it is running inside vmware fusion and disk-access isn't that great that's fine. I have allocated six GB ram and two cpu-cores.
 
 [1]: http://jooby.org
 [2]: https://dl.dropboxusercontent.com/u/2729115/worldcitiespop.zip
